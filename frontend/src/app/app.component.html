@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="header">
+    <h1>🚀 {{title}}</h1>
+    <p>Connected to Spring Boot API on Render</p>
+  </div>
+  
+  <div class="content">
+    <div class="api-section">
+      <h2>🔌 API Connection Test</h2>
+      <p>API Endpoint: <strong>https://springboot-api-qn8w.onrender.com/api/hello</strong></p>
+      
+      <div *ngIf="loading" class="loading">
+        🔄 Loading API response...
+      </div>
+      
+      <div *ngIf="error" class="error">
+        ❌ {{error}}
+        <br><br>
+        <button (click)="retryApi()">🔄 Retry</button>
+      </div>
+      
+      <div *ngIf="apiResponse && !loading && !error" class="success">
+        ✅ <strong>API Response:</strong> {{apiResponse}}
+      </div>
+      
+      <br>
+      <button (click)="callApi()" [disabled]="loading">
+        {{loading ? '🔄 Loading...' : '🔄 Refresh API Call'}}
+      </button>
+    </div>
+
+    <div class="api-section">
+      <h2>📋 Project Information</h2>
+      <p>✅ Angular application ready for Netlify deployment</p>
+      <p>✅ CORS-enabled API calls to your Spring Boot backend</p>
+      <p>✅ Error handling and retry functionality</p>
+      <p>✅ Responsive design with modern UI</p>
+    </div>
+  </div>
+</div>
+<router-outlet />
