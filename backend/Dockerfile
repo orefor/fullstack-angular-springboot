@@ -1,6 +1,10 @@
 # Dockerfile
-FROM eclipse-temurin:17-jdk-alpine
+FROM maven:3.9.6-eclipse-temurin-17
+
 WORKDIR /app
-COPY . /app
+
+COPY . .
+
 RUN mvn clean install -DskipTests
+
 CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
